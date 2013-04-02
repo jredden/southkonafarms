@@ -89,17 +89,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language ?>" lang="<?php print $language->language ?>" dir="<?php print $language->dir ?>">
 <head>
-  <title><?php print $head_title; ?></title>
-  <?php print $head; ?>
-  <?php print $styles; ?>
+  <title><?php print render($page['head_title']); ?></title>
+  <?php print render($page['head']); ?>
+  <?php print render($page['styles']); ?>
    <? returnTimeSkin($dateTime);?>
-  <?php print $layout_settings; ?>
-  <?php print $scripts; ?>
+  <?php print render($page['layout_settings']); ?>
+  <?php print render($page['scripts']); ?>
 </head>
 <body class="<?php print $classes; ?>">
   <div id="container">
 
-    <div id="skip-nav" class="<?php print $skip_nav_class; ?>">
+    <div id="skip-nav" class="<?php print render($page['skip_nav_class']); ?>">
       <!-- To adjust the display of the skip link see the Advanced theme settings (General settings), and never use display:none! -->
       <a href="#main-content"><?php print t('Skip to main content'); ?></a>
     </div>
@@ -114,8 +114,8 @@
       </div> <!-- /admin user link -->
     <?php endif; ?>
 
-    <?php if ($leaderboard): ?>
-      <div id="leaderboard"><?php print $leaderboard; ?>
+    <?php if ($page['leaderboard']): ?>
+      <div id="leaderboard"><?php print render($page['leaderboard']); ?>
 	  <div id="clock"><div id="time"><?=$dateTime->format("g:i A");?></div>&nbsp;-  Hawaii</div>
 	  <?echo "<input id='servertime' type='hidden' value='".$dateTime->format("U")."' />";?>
 	  </div> <!-- /leaderboard -->
@@ -123,10 +123,10 @@
 
     <div id="header" class="clearfix">
 
-      <?php if ($linked_site_logo or $linked_site_name or $site_slogan): ?>
+      <?php if ($linked_site_logo or variable_get('site_name') or $site_slogan): ?>
         <div id="branding">
 
-          <?php if ($linked_site_logo or $linked_site_name): ?>
+          <?php if ($linked_site_logo): ?>
             <?php if ($title): ?>
               <div class="logo-site-name"><strong>
                 <?php if ($linked_site_logo): ?><span id="logo"><?php print $linked_site_logo; ?></span><?php endif; ?>
@@ -148,11 +148,11 @@
       <?php endif; ?>
 
       <?php if ($search_box): ?>
-        <div id="search-box"<?php print $toggle_label ?>><?php print $search_box; ?></div> <!-- /search box -->
+        <div id="search-box"<?php print render($page['toggle_label']) ?>><?php print $search_box; ?></div> <!-- /search box -->
       <?php endif; ?>
 
-      <?php if ($header): ?>
-        <div id="header-region"><?php print $header; ?></div> <!-- /header region -->
+      <?php if ($page['header']): ?>
+        <div id="header-region"><?php print render($page['header']); ?></div> <!-- /header region -->
       <?php endif; ?>
 
     </div> <!-- /header -->
@@ -184,36 +184,36 @@
       </div> <!-- /breadcrumb -->
     <?php endif; ?>
 
-    <?php if ($secondary_content): ?>
-      <div id="secondary-content"><?php print $secondary_content; ?></div> <!-- /secondary-content -->
+    <?php if ($page['secondary_content']): ?>
+      <div id="secondary-content"><?php print render($page['secondary_content']); ?></div> <!-- /secondary-content -->
     <?php endif; ?>
 
     <div id="columns"><div class="columns-inner clearfix">
 
       <div id="content-column">
 	  
-	  <?php if ($left): ?>
-        <div id="sidebar-first" class="sidebar"><?php print $left; ?></div> <!-- /sidebar-first -->
+	  <?php if ($page['left']): ?>
+        <div id="sidebar-first" class="sidebar"><?php print render($page['left']); ?></div> <!-- /sidebar-first -->
       <?php endif; ?>
-	  <?php if ($right): ?>
-        <div id="sidebar-last" class="sidebar"><?php print $right; ?></div> <!-- /sidebar-last -->
+	  <?php if ($page['right']): ?>
+        <div id="sidebar-last" class="sidebar"><?php print render($page['right']); ?></div> <!-- /sidebar-last -->
       <?php endif; ?>
 	  <div class="content-inner">
 	  
 		<?php if ($messages or $help): ?>
 		  <div id="messages-and-help">
 			<h2 class="element-invisible"><?php print t('System Messages'); ?></h2>
-			<?php if ($messages): print $messages; endif; ?>
-			<?php if ($help): print $help; endif; ?>
+			<?php if ($page['messages']): print render($page['messages']); endif; ?>
+			<?php if ($page['help']): print render($page['help']); endif; ?>
 		  </div> <!-- /messages/help -->
 		<?php endif; ?>
 		
-        <?php if ($mission): ?>
-          <div id="mission"><?php print $mission; ?></div> <!-- /mission -->
+        <?php if ($page['mission']): ?>
+          <div id="mission"><?php print render($page['mission']); ?></div> <!-- /mission -->
         <?php endif; ?>
 
-        <?php if ($content_top): ?>
-          <div id="content-top"><?php print $content_top; ?></div> <!-- /content-top -->
+        <?php if ($page['content_top']): ?>
+          <div id="content-top"><?php print render($page['content_top']); ?></div> <!-- /content-top -->
         <?php endif; ?>
 		
         <div id="main-content">

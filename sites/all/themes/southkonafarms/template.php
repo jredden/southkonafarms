@@ -8,7 +8,7 @@
 // Don't include custom functions if the database is inactive.
 db_set_active();
 
-include_once(drupal_get_path('theme', 'adaptivetheme') .'/inc/template.custom-functions.inc');
+// include_once(drupal_get_path('theme', 'adaptivetheme') .'/inc/template.custom-functions.inc');
 
 /**
  * Add the color scheme stylesheet if color_enable_schemes is set to 'on'.
@@ -99,8 +99,8 @@ function southkonafarms_preprocess_block(&$vars, $hook) {
 function returnTimeSkin($dateTime){
 	$date = $dateTime->format("G");
 	if( ( $date >= 0 && $date <=4 ) || ( $date >= 20 && $date <=23)){
-		echo '<link href="/sites/southkonafarms.com/themes/southkonafarms/css/theme/night_theme.css" rel="stylesheet" type="text/css"/>';
+		echo '<link href="/southkonafarms/sites/all/themes/southkonafarms/css/theme/evening_theme.css" rel="stylesheet" type="text/css"/>';
 	}else if ( ( $date >= 5 && $date <=9 ) || ( $date >= 16 && $date <=19)){
-		echo '<link href="/sites/southkonafarms.com/themes/southkonafarms/css/theme/evening_theme.css" rel="stylesheet" type="text/css"/>';
+		echo '<link href="/southkonafarms/sites/all/themes/southkonafarms/css/theme/evening_theme.css" rel="stylesheet" type="text/css"/>';
 	}
 }
